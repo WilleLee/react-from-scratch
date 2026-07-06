@@ -2,9 +2,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 function App() {
-  return React.createElement("h1", null, "Hello React");
+  return <h1>Hello React with JSX!</h1>;
 }
 
 const rootElement = document.getElementById("root");
 
-createRoot(rootElement).render(React.createElement(App));
+createRoot(rootElement).render(<App />);
