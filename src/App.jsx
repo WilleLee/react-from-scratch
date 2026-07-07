@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Counter from "./components/Counter.jsx";
 import CounterSection from "./components/CounterSection.jsx";
 
-const counters = [
+const INITIAL_COUNTERS = [
   {
     id: 1,
     title: "첫 번째 카운터",
@@ -17,13 +16,35 @@ const counters = [
 ];
 
 function App() {
+  const [counters, setCounters] = useState(INITIAL_COUNTERS);
   const [title, setTitle] = useState("");
-  const [submittedTitle, setSubmittedTitle] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
-    setSubmittedTitle(title);
+
+    const nextTitle = title.trim();
+
+    if (!nextTitle) {
+      return;
+    }
+
+    const nextCount = {
+      id: Date.now(),
+      title: nextTitle,
+      description: "사용자가 추가한 카운터입니다",
+      initialCount: 0,
+    };
+
+    setCounters((prevCounters) => [...prevCounters, nextCount]);
     setTitle("");
   }
+
+  function handleRemoveCounter(id) {
+    setCounters((prevCounters) =>
+      prevCounters.filter((counter) => counter.id !== id),
+    );
+  }
+
   return (
     <div>
       <h1>Hello React with JSX!</h1>
@@ -35,10 +56,12 @@ function App() {
         />
         <button type="submit">제출</button>
       </form>
-      <p>입력 중인 제목: {title}</p>
-      <p>제출된 제목: {submittedTitle}</p>
       {counters.map((counter) => (
-        <CounterSection key={counter.id} {...counter} />
+        <CounterSection
+          key={counter.id}
+          {...counter}
+          onRemove={() => handleRemoveCounter(counter.id)}
+        />
       ))}
     </div>
   );
