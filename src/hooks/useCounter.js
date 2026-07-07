@@ -1,21 +1,26 @@
 import { useState } from "react";
 
-const INIT_NUMBER = 0;
+const DEFAULT_INIT_COUNT = 0;
 
-function useCounter() {
-  const [count, setCount] = useState(INIT_NUMBER);
+function useCounter(initCount = DEFAULT_INIT_COUNT) {
+  const [count, setCount] = useState(initCount);
 
   function increase() {
     setCount((prev) => prev + 1);
   }
 
+  function decrease() {
+    setCount((prev) => prev - 1);
+  }
+
   function reset() {
-    setCount(INIT_NUMBER);
+    setCount(initCount);
   }
 
   return {
     count,
     increase,
+    decrease,
     reset,
   };
 }
