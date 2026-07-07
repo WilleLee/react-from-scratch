@@ -1,33 +1,14 @@
 import { useState } from "react";
 import Button from "./Button.jsx";
-
-const INIT_NUMBER = 0;
-
-const useIncreaseNumber = () => {
-  const [count, setCount] = useState(INIT_NUMBER);
-
-  function handleIncreaseClick() {
-    setCount((prev) => prev + 1);
-  }
-
-  function handleResetClick() {
-    setCount(INIT_NUMBER);
-  }
-
-  return {
-    count,
-    handleIncreaseClick,
-    handleResetClick,
-  };
-};
+import useCounter from "../hooks/useCounter.js";
 
 function Counter() {
-  const { count, handleIncreaseClick, handleResetClick } = useIncreaseNumber();
+  const { count, increase, reset } = useCounter();
   return (
     <div>
       <p>클릭 횟수: {count}</p>
-      <Button onClick={handleIncreaseClick}>증가</Button>
-      <Button onClick={handleResetClick}>초기화</Button>
+      <Button onClick={increase}>증가</Button>
+      <Button onClick={reset}>초기화</Button>
     </div>
   );
 }
