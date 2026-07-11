@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 function AddCounterForm({ onAdd }) {
   const [title, setTitle] = useState("");
@@ -23,7 +24,7 @@ function AddCounterForm({ onAdd }) {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="카운터 제목을 입력하세요."
       />
-      <button type="submit">제출</button>
+      <Button type="submit">제출</Button>
     </form>
   );
 }

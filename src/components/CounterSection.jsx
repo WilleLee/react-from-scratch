@@ -1,3 +1,4 @@
+import Button from "./Button";
 import Counter from "./Counter";
 
 function CounterSection({ title, initialCount, description, onRemove }) {
@@ -6,7 +7,7 @@ function CounterSection({ title, initialCount, description, onRemove }) {
       <h2>{title}</h2>
       {description && <p>{description}</p>}
       <Counter initialCount={initialCount} />
-      <button onClick={onRemove}>삭제</button>
+      <Button onClick={onRemove}>삭제</Button>
     </section>
   );
 }

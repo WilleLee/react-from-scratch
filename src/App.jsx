@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CounterSection from "./components/CounterSection.jsx";
 import AddCounterForm from "./components/AddCounterForm.jsx";
+import CounterList from "./components/CounterList.jsx";
 
 const INITIAL_COUNTERS = [
   {
@@ -39,13 +40,7 @@ function App() {
     <div>
       <h1>Hello React with JSX!</h1>
       <AddCounterForm onAdd={handleAddCounter} />
-      {counters.map((counter) => (
-        <CounterSection
-          key={counter.id}
-          {...counter}
-          onRemove={() => handleRemoveCounter(counter.id)}
-        />
-      ))}
+      <CounterList onRemove={handleRemoveCounter} counters={counters} />
     </div>
   );
 }
