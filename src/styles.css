@@ -1,0 +1,20 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+section {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+}

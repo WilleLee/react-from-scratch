@@ -4,6 +4,8 @@ import Button from "./Button";
 function AddCounterForm({ onAdd }) {
   const [title, setTitle] = useState("");
 
+  const isTitleEmpty = title.trim().length === 0;
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -24,7 +26,9 @@ function AddCounterForm({ onAdd }) {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="카운터 제목을 입력하세요."
       />
-      <Button type="submit">제출</Button>
+      <Button type="submit" disabled={isTitleEmpty}>
+        제출
+      </Button>
     </form>
   );
 }
